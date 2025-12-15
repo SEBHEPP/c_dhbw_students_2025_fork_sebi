@@ -35,3 +35,6 @@ Release/
 *.tmp
 *.swp
 *.bak
+
+# Solution folders
+Solution/
