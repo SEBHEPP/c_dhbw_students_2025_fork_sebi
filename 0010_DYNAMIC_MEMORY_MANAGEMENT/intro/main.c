@@ -26,6 +26,6 @@ int main()
     printf("\nThe sum of the array elements is: %d", total);
     free(array);
     array = NULL;
-    
+
     return 0;
 }
