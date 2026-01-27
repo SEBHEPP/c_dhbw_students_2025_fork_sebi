@@ -1,42 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum(int* arr, long size) {
-    long total = 0;
-    for (long i = 0; i < size; i++) {
-        total += arr[i];
+
+int sum(int* array, size_t n) {
+    int s = 0;
+    for (size_t i = 0; i < n; i++) {
+        s += array[i];
     }
-    return total;
+    return s;
 }
 
-int main() 
+
+int main(void) 
 {
-    long size;
-    printf("Enter the number of elements for the integer array: ");
-    scanf("%ld", &size);
+    size_t n;
+    
+    printf("Enter the number of elements: ");
+    scanf("%lu", &n);
 
-    if (size < 0) {
-        printf("\nSize cannot be negative.\n");
-        return 1;        
+    if (n <= 0) {
+        printf("Invalid input! The number of elements must be greater than zero");
+        return -1;
     }
 
-    int* array = (int*) malloc(size * sizeof(int));
+    int* arr = (int*)malloc(n*sizeof(int));
 
-    if (array == NULL) {
-        printf("\nMemory allocation failed.\n");
-        return 1;
+    if (arr == NULL) {
+        printf("Memory allocation failed!");
+        return -1;
     }
 
-    printf("\nEnter %ld numbers: ", size);
-    for (long i = 0; i < size; i++) {
-        scanf("%d", &array[i]);
+    printf("Enter %lu elements: ", n);
+    for (size_t i = 0; i < n; i++) {
+        scanf("%d", &(arr[i]));
     }
 
-    printf("\nThe sum of the array elements is: %d", sum(array, size));
+    printf("The sum of the array elements is: %d", sum(arr, n));
 
-
-    free(array);
-    array = NULL;
+    free(arr);
 
     return 0;
 }

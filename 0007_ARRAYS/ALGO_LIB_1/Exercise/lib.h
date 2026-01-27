@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-/*#include <cstddef>
+#include <stddef.h>
 
 bool allOf(int32_t *array, size_t length, int32_t value);
 
@@ -14,4 +14,3 @@ bool noneOf(int32_t *array, size_t length, int32_t value);
 size_t count(int32_t *array, size_t length, int32_t value);
 
 #endif
-*/

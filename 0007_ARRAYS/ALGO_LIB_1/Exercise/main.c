@@ -5,7 +5,7 @@
 
 #include "lib.h"
 
-int main()
+int main(void)
 {
     int32_t array[] = {3, 1, 4, 1, 5, 9, 2, 6};
     size_t length = 8;

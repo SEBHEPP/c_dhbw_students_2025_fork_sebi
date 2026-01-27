@@ -1,35 +1,42 @@
 #include <stdio.h>
 
-union FloatUnion 
-{
+
+union FloatUnion {
     float f;
-    unsigned char bytes[sizeof(float)]; // 4 bytes in a float
+    unsigned char bytes[sizeof(float)];
 };
 
-void printBits(unsigned char byte) 
-{
-    for (int i = 7; i >= 0; i--) // looping through the 8 bits of a byte: Hier wird durch die Bytes der union von hinten (höchstwertiges Byte) nach vorne (niederwertiges Byte) iteriert.
-    {
-        printf("%d", (byte >> i) & 1); // Shift the byte i positions to the right and then bitwise AND with 1
+
+void printBytesHex(union FloatUnion* f) {
+    for (int i = sizeof(float) - 1; i >= 0 ; i--) {
+        printf("%02X ", (*f).bytes[sizeof(float)-i]);
+    }
+    printf("\n");
+}
+
+void printBits(union FloatUnion* f){
+    char tmpChar;
+    for (int i = sizeof(float) - 1; i >= 0; i--) {
+        tmpChar = (*f).bytes[sizeof(float)-i];
+        for (int b = 7; b >= 0; b--) {
+            printf("%d ", (tmpChar >> b) & 1);
+        }
     }
 }
 
-int main() 
+
+int main(void) 
 {
+    float floatUserInput;
+
+    printf("Float-Wert eingeben: ");
+    scanf("%f", &floatUserInput);
+
     union FloatUnion myUnion;
-    printf("Enter a float number: ");
-    scanf("%f", &myUnion.f);
+    myUnion.f = floatUserInput;
 
-    printf("Bits of the float number:\n");
-    for (int i = sizeof(float) - 1; i >= 0; i--) // looping through the 4 bytes of a float
-    {
-        printBits(myUnion.bytes[i]);
-        if (i > 0) 
-        {
-            printf(" ");
-        }
-    }
-    printf("\n");
-
+    printBytesHex(&myUnion);
+    printBits(&myUnion);
+    
     return 0;
 }

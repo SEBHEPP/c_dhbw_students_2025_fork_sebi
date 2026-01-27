@@ -1,10 +1,18 @@
 #include <stdio.h>
 
-// Call by Reference function
 
-// Call by Value function
+void printMemoryAddressAndValue(float* floatPtr) {
+    printf("Value of float: %.2f\n", *floatPtr);
+    printf("Address of float: %p\n", (void*)floatPtr);
+    
+}
 
-int main()
+float addValue(float num, float userInput){
+    return num + userInput;
+}
+
+
+int main(void)
 {
     float myFloat = 42.42f;
 

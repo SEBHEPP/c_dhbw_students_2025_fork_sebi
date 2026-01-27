@@ -1,8 +1,21 @@
 #include <stdio.h>
 
-int main()
+int main(void)
 {
+    float millisconds = 0.0F;
 
+    printf("Please enter a millisecond value: ");
+    scanf("%f", &millisconds);
+
+    float seconds = millisconds/1000;
+    float minutes = seconds/60;
+    float hours = minutes/60;
+    float days = hours/24;
+
+    printf("seconds: %f\n", seconds);
+    printf("minutes: %f\n", minutes);
+    printf("hours: %f\n", hours);
+    printf("days: %f\n", days);
 
     return 0;
 }
