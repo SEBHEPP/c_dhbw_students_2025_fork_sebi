@@ -121,4 +121,3 @@ void performeTestCases(void)
     assert(toLowerCase(numeric) == numeric);
     assert(toLowerCase(somethingElse) == somethingElse);
 }
-
